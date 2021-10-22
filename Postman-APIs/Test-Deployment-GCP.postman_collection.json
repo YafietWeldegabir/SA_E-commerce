@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "5a061059-73a4-4ce8-8736-b31e74363f3a",
+		"name": "Test-Deployment-GCP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ingress-test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer-POST-Add-New",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"drivingLicenseId\":\"2\",\n    \"firstName\":\"Ghidiom\",\n    \"lastName\":\"Nughusse\",\n    \"address\":{\n        \"street\":\"1000N\",\n        \"city\":\"Fairfield\",\n        \"state\":\"IA\",\n        \"country\":\"US\",\n        \"zip\":52557\n    },\n    \"contact\":{\n        \"email\":\"gberaki@miu.edu\",\n        \"phoneNumber\":\"+16418191504\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.201.79.214/customer/add",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"customer",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer-UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"drivingLicenseId\":\"55555\",\n    \"firstName\":\"Ghidiom\",\n    \"lastName\":\"Nughusse\",\n    \"address\":{\n        \"street\":\"1000N\",\n        \"city\":\"Fairfield\",\n        \"state\":\"IA\",\n        \"country\":\"US\",\n        \"zip\":52557\n    },\n    \"contact\":{\n        \"email\":\"gberaki@miu.edu\",\n        \"phoneNumber\":\"0000000000\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.201.79.214/customer/update",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"customer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer-GET-By-Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/customer/get/1111",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"customer",
+						"get",
+						"1111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product-POST-Add-New",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productNumber\":\"mb333\",\n    \"name\":\"SM-903\",\n    \"price\":99.99,\n    \"description\":\"Galaxy-S9 plus\",\n    \"quantity\":800\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://35.201.79.214/product/add",
+					"protocol": "http",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product-GET-By-Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/product/get/mb001",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"product",
+						"get",
+						"mb001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product-UPDATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productNumber\": \"mb001\",\n    \"name\": \"SM-901\",\n    \"price\": 99.99,\n    \"description\": \"Galaxy-S5\",\n    \"quantity\": 150\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.201.79.214/product/update",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"product",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product-GET-Quantity-By-Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/product/getQuantity/mb001",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"product",
+						"getQuantity",
+						"mb001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShoppingCart-POST-Creat Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.201.79.214/shoppingCart/createCart",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"shoppingCart",
+						"createCart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShoppingCart-POST-Add -Product-to-Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productNumber\":\"mb001\",\n    \"name\":\"SM-901\",\n    \"price\":99.99,\n    \"description\":\"Galaxy-S5\",\n    \"quantity\":100\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "35.201.79.214/shoppingCart/addProduct/SC9574",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"shoppingCart",
+						"addProduct",
+						"SC9574"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShoppingCart-POST-Change Product Quantity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/shoppingCart/changeQuantity/SC6268/mb001/7",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"shoppingCart",
+						"changeQuantity",
+						"SC6268",
+						"mb001",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShoppingCart-POST-Delete Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/shoppingCart/removeProduct/{cartId}",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"shoppingCart",
+						"removeProduct",
+						"{cartId}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShoppingCart-POST-CheckOut",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/shoppingCart/checkOut/SC9574/1111",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"shoppingCart",
+						"checkOut",
+						"SC9574",
+						"1111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShoppingCart-GET-CheckOut-Cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/shoppingCart/get",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"shoppingCart",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order-getAll-Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/order/getorder",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"order",
+						"getorder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order-getOrder-By-ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "35.201.79.214/order/getorder",
+					"host": [
+						"35",
+						"201",
+						"79",
+						"214"
+					],
+					"path": [
+						"order",
+						"getorder"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

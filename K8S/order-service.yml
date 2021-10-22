@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-app
+  labels: 
+    app: order-service-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app : order-service-app
+  template:
+    metadata:
+      labels:
+        app: order-service-app
+    spec:
+      containers:
+      - name: order-service-app
+        image: ghidiom/webstore-order:1.2
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        env:
+          - name: PORT 
+            value: "8080"
+          - name: MONGO_URL
+            value: open-mongo-db-server2-mongodb
+          - name: KAFKA          
+            valueFrom: 
+              configMapKeyRef:
+                name: e-commerce-app-config
+                key: kafka-address
+          - name: MONGO_PORT
+            value: "27017"
+          - name: DB_NAME
+            value: SA-Project-Order
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: e-commerce-app-secret
+                key: db-user-username
+          - name: DB_PASSWORD
+            value: root       
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  order-service-svc
+spec:
+  selector:
+    app:  order-service-app
+  ports:
+  - port:  8080
+    targetPort:  8080

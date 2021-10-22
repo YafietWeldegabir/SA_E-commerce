@@ -1,0 +1,34 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: shoppingcartquery-service-app
+#   labels:
+#     app: shoppingcartquery-service-app
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: shoppingcartquery-service-app
+#   template:
+#     metadata:
+#       labels:
+#         app: shoppingcartquery-service-app
+#     spec:
+#       containers:
+#         - name: shoppingcartquery-service-app
+#           image: yafietweldegabir/shoppingcartquery-service:2.0
+#           imagePullPolicy: Always
+#           ports:
+#             - containerPort: 8083
+
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: shoppingcartquery-service-svc
+# spec:
+#   selector:
+#     app: shoppingcartquery-service-app
+#   ports:
+#     - port: 80
+#       targetPort: 8083

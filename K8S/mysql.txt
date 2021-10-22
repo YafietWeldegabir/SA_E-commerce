@@ -1,0 +1,8 @@
+
+helm install my-mongo-db-server bitnami/mongodb \
+--set auth.enabled=false \
+--set secondary.replicaCount=3 \
+--set auth.database=my_database \
+--set architecture=replicaset \
+--set auth.username=root \
+--set auth.password=root

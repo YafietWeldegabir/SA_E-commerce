@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service-app
+  labels: 
+    app: customer-service-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app : customer-service-app
+  template:
+    metadata:
+      labels:
+        app: customer-service-app
+    spec:
+      containers:
+      - name: customer-service-app
+        image: ghidiom/webstore-customer:1.1
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        env:
+          - name: SERVER_PORT 
+            value: "8080"
+          - name: MONGO_URL
+            value: open-mongo-db-server2-mongodb
+          - name: KAFKA          
+            valueFrom: 
+              configMapKeyRef:
+                name: e-commerce-app-config
+                key: kafka-address
+          - name: MONGO_PORT
+            value: "27017"
+          - name: DB_NAME
+            value: SA-Project-Customer
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: e-commerce-app-secret
+                key: db-user-username
+          - name: DB_PASSWORD
+            value: root
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  customer-service-svc
+spec:
+  selector:
+    app:  customer-service-app
+  ports:
+  - port:  8080
+    targetPort:  8080

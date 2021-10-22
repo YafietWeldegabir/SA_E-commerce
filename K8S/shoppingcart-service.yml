@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppingcart-service-app
+  labels: 
+    app: shoppingcart-service-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app : shoppingcart-service-app
+  template:
+    metadata:
+      labels:
+        app: shoppingcart-service-app
+    spec:
+      containers:
+      - name: shoppingcart-service-app
+        image: ghidiom/webstore-shoppingcart:1.1
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        env:
+          - name: PORT 
+            value: "8080"
+          - name: KAFKA          
+            valueFrom: 
+              configMapKeyRef:
+                name: e-commerce-app-config
+                key: kafka-address
+          - name: MONGO_URL
+            value: open-mongo-db-server2-mongodb
+          - name: MONGO_PORT
+            value: "27017"
+          - name: DB_NAME
+            value: SA-Project-Product
+          - name: DB_USER
+            value: root
+          - name: DB_PASSWORD
+            value: root   
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  shoppingcart-service-svc
+spec:
+  selector:
+    app:  shoppingcart-service-app
+  ports:
+  - port:  8080
+    targetPort:  8080
